@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="//www.gstatic.com/cast/sdk/libs/caf_receiver/v3/cast_receiver_framework.js"></script>
+    <script src="dist/release/cjs/cl.core.js"></script>
+    <script src="dist/release/cjs/cl.cast.js"></script>
+  </head>
+  <body>
+    <cast-media-player id="video"></cast-media-player>
+    <style>
+      cast-media-player {
+        --progress-color: #D2232A;
+        --splash-image: url('https://castlabs.com/wp-content/uploads/website-home-share.png');
+        --splash-size: cover;
+        --background-image: url('https://castlabs.com/wp-content/uploads/website-home-share.png');
+        --background-size: cover;
+        --logo-image: none;
+      }
+    </style>
+    <script>
+      const player = new clpp.Player('video');
+      player.use(clpp.drm.HeaderDrmComponent);
+      const receiver = clpp.cast.Receiver.getInstance();
+      receiver.init(player);
+      receiver.start();
+    </script>
+  </body>
+</html>
