@@ -2,8 +2,8 @@
 <html>
   <head>
     <script src="//www.gstatic.com/cast/sdk/libs/caf_receiver/v3/cast_receiver_framework.js"></script>
-    <script src="dist/release/cjs/cl.core.js"></script>
-    <script src="dist/release/cjs/cl.cast.js"></script>
+    <script src="js/cl.core.js"></script>
+    <script src="js/cl.cast.js"></script>
   </head>
   <body>
     <cast-media-player id="video"></cast-media-player>
@@ -18,7 +18,9 @@
       }
     </style>
     <script>
-      const player = new clpp.Player('video');
+      const player = new clpp.Player('video', {
+        license: 'eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJ1cmxzIjpbImh0dHBzOi8vc21hcnR2aWRlby1kZWxpdmQuZ2FsYXh5ZHZlLmNvbSJdLCJ0eXBlIjoiV2ViIiwia2lkIjoyNzgyLCJpbHYiOmZhbHNlfQ.o34U33GvPqkYRkcnAnIdZYOC1YhUnxhToCLXQ6s7XxRAdWsrTuGEYTBR7ie-6p1Tgt8A5-IUlXerUWhWJAhgnS6rQG1WalBOT_y_zTjQ3UKJIF4mjQUvDgyO7f0k3PB0iVqy1K0h1dHG5R4k0s6NDi8NU9f7HksWAxKj4tns-qO3c8_Jp4e4Ga4gAcJDy1W5bKxMWxLTQv62WXQaTZwGFks_3g8vy88cRWU9Grt7-9nJnnndiNfzavrkmFtVbqPfOavNcmDu4HtJQcrkCzIoeYxKakdWCNkeqVAe6rlNIRFdxKDpeJNk6nPzn4bsPw-2GVwDsDrID0dbBlZf2jvfQg' 
+      });
       player.use(clpp.drm.HeaderDrmComponent);
       const receiver = clpp.cast.Receiver.getInstance();
       receiver.init(player);
