@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="//www.gstatic.com/cast/sdk/libs/caf_receiver/v3/cast_receiver_framework.js"></script>
+    <script src="js/cl.core.js"></script>
+    <script src="js/cl.cast.js"></script>
+  </head>
+  <body>
+    <cast-media-player id="video"></cast-media-player>
+    <style>
+      cast-media-player {
+        --progress-color: #D2232A;
+        --splash-image: url('img/banner.png');
+        --splash-size: cover;
+        --background-image: url('img/banner.png');
+        --background-size: cover;
+        --logo-image: none;
+      }
+    </style>
+    <script>
+      const player = new clpp.Player('video', {
+        license: 'eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYWNrYWdlTmFtZSI6ImNvbS52aXJnb3BsYXkubWFzdGVyY2hlZiIsInNoYTEiOiI0NDoxMTpBNjo4NzoxNzo4RDo5QTo5MjoxMTpENjpDNzo4Rjo2OTo4Mzo1NTozMTo0MTozMzpFMjo0OCIsImtpZCI6NDI5MCwiaWx2IjpmYWxzZX0.L7kl6uTPwkB-IEe_m70Ju60YBZHpwObvdP3H0pcL-OGY2ruPJSoHMyexSqkLqT93dopjGZvfa2L1yq4H9RwfeJqOQ6lH6Ys61k-zhM14uMYxeCYCPejJg_Q5Uotm6tyDqzbtr8CsLa-_ehmtxXWlgwZWyo0mzedT5yKv3ccWOU0Idowv_2YoFywW2r_JoBOF4oEkmpaenOlX0bajbkc22wjemZig2nFhIbQC7l9L-pcHIKjYDnhUM7PNF5BpTJQ2PE85zbs2eM00jjOEJQaaQcrzQ12ydtAk5jMB8YQz3zJ9fJggZ-yUqBuZMJLAdwBZlst07-j3aa5CiWsWFP6F1Q'
+      });
+      player.use(clpp.drm.HeaderDrmComponent);
+      const receiver = clpp.cast.Receiver.getInstance();
+      receiver.init(player);
+      receiver.start();
+    </script>
+  </body>
+</html>
